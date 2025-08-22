@@ -1,159 +1,146 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agence OnlyFans Manager Automatisée</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nova Agency — OnlyFans Management Automatisé</title>
+  <meta name="description" content="Nova Agency aide les créatrices OnlyFans à augmenter leurs revenus grâce à l’automatisation, la planification de contenu et l’optimisation de la croissance.">
   <style>
-    /* Simple reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root{
+      --bg:#0b0f19; --card:#12172a; --muted:#aab2c5; --text:#eef1f6;
+      --accent:#3aa7ff; --accent-2:#6cf3ff;
     }
-
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      background-color: #f9f9f9;
-      color: #333;
+    *{box-sizing:border-box} html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1080px;margin:0 auto;padding:24px}
+    header{
+      background: radial-gradient(1200px 400px at 10% -20%, rgba(58,167,255,.35), transparent 60%),
+                  radial-gradient(1000px 500px at 110% -30%, rgba(108,243,255,.25), transparent 60%),
+                  linear-gradient(180deg, #0b0f19 0%, #0d1222 100%);
+      padding:72px 0 56px;
+      border-bottom:1px solid #1b2240;
     }
-
-    header {
-      background: linear-gradient(90deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
-      color: #fff;
-      text-align: center;
-      padding: 50px 20px;
+    .brand{display:flex;align-items:center;gap:16px}
+    .logo{
+      width:56px;height:56px;border-radius:14px;
+      display:grid;place-items:center;
+      background:linear-gradient(145deg, var(--accent), var(--accent-2));
+      color:#001421;font-weight:800;font-size:26px;
+      box-shadow:0 10px 22px rgba(58,167,255,.25);
     }
-
-    header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 15px;
+    .h1{font-size:40px;line-height:1.1;margin:18px 0 8px}
+    .lead{color:var(--muted);font-size:18px;max-width:780px}
+    .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+    .btn{
+      padding:12px 18px;border-radius:12px;border:1px solid #2a335c;
+      background:#151b33;color:var(--text);font-weight:600;
+      transition:transform .05s ease, background .2s ease;
     }
-
-    header p {
-      font-size: 1.2rem;
+    .btn:hover{transform:translateY(-1px);background:#1a2142}
+    .btn-primary{
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      color:#062236;border:none;box-shadow:0 10px 24px rgba(58,167,255,.35);
     }
-
-    .cta-button {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 24px;
-      background-color: #ff6f91;
-      color: #fff;
-      border-radius: 4px;
-      text-decoration: none;
-      transition: background 0.3s ease;
+    section{padding:56px 0;border-bottom:1px solid #141a30}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{
+      background:var(--card);border:1px solid #1a2142;border-radius:16px;
+      padding:22px;min-height:160px
     }
-
-    .cta-button:hover {
-      background-color: #ee5a7e;
-    }
-
-    section {
-      padding: 40px 20px;
-    }
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .feature-item {
-      background-color: #fff;
-      border: 1px solid #e0e0e0;
-      border-radius: 8px;
-      padding: 20px;
-      text-align: center;
-    }
-
-    .feature-item h3 {
-      margin-bottom: 10px;
-      color: #ff6f91;
-    }
-
-    .how-it-works {
-      background-color: #fff;
-      border-radius: 8px;
-      padding: 30px;
-      margin-top: 20px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    }
-
-    .how-it-works ol {
-      margin-left: 20px;
-    }
-
-    .contact-section {
-      background-color: #fafafa;
-      padding: 40px 20px;
-      border-top: 1px solid #e0e0e0;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
-      color: #777;
-    }
+    .card h3{margin:0 0 8px}
+    .muted{color:var(--muted)}
+    .how{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .chip{display:inline-block;padding:6px 10px;background:#111731;border:1px solid #243059;border-radius:999px;color:var(--muted);font-size:13px}
+    footer{padding:36px 0;color:#9aa3ba;text-align:center}
+    @media (max-width:900px){.grid,.how{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
+
   <header>
-    <h1>Agence OnlyFans Manager Automatisée</h1>
-    <p>Augmentez vos revenus en automatisant votre OnlyFans</p>
-    <!-- ✅ Bouton modifié -->
-    <a href="https://forms.gle/2xBLefPZRTsnnSSGA" target="_blank" class="cta-button">
-      Remplir le questionnaire d’onboarding
-    </a>
+    <div class="container">
+      <div class="brand">
+        <div class="logo">N</div>
+        <div>
+          <div class="chip">Nova Agency</div>
+          <h1 class="h1">OnlyFans Management Automatisé</h1>
+          <p class="lead">Nous aidons les créatrices à <strong>gagner plus</strong> en <strong>travaillant moins</strong> : réponses 24/7 par IA, planification de contenu, upsells et croissance pilotée par les données.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="https://forms.gle/2xBLefPZRTsnnSSGA" target="_blank" rel="noopener">Remplir le formulaire d’onboarding</a>
+            <a class="btn" href="#services">Voir nos services</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </header>
 
-  <section>
-    <h2 style="text-align:center; margin-bottom:20px;">Nos services</h2>
-    <div class="features">
-      <div class="feature-item">
-        <h3>Chat IA</h3>
-        <p>Réponses automatisées et upsells personnalisés 24/7 pour garder vos fans engagés.</p>
-      </div>
-      <div class="feature-item">
-        <h3>Planification de contenu</h3>
-        <p>Calendrier optimisé pour poster au meilleur moment et maximiser la conversion.</p>
-      </div>
-      <div class="feature-item">
-        <h3>Analytics avancés</h3>
-        <p>Tableau de bord clair avec abonnés, revenus et taux de conversion.</p>
-      </div>
-      <div class="feature-item">
-        <h3>Sales Funnels</h3>
-        <p>Création de tunnels de ventes cross-platform pour amener plus de trafic sur votre page.</p>
+  <section id="services">
+    <div class="container">
+      <h2 style="margin:0 0 18px">Nos services</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Chat & Upsells IA 24/7</h3>
+          <p class="muted">Messages automatiques personnalisés, relances intelligentes et ventes PPV sans effort.</p>
+        </div>
+        <div class="card">
+          <h3>Planification de contenu</h3>
+          <p class="muted">Calendrier optimisé + publication régulière pour maximiser la conversion et l’engagement.</p>
+        </div>
+        <div class="card">
+          <h3>Growth & Funnels</h3>
+          <p class="muted">Stratégies d’acquisition, promotions, bundles & campagnes de rétention.</p>
+        </div>
+        <div class="card">
+          <h3>Analytics & reporting</h3>
+          <p class="muted">Tableau de bord clair : revenus, taux de conversion, A/B tests d’offres.</p>
+        </div>
+        <div class="card">
+          <h3>Onboarding simple</h3>
+          <p class="muted">Aucun coût fixe — partage des revenus (70% créatrice / 30% agence). Tu crées, nous faisons le reste.</p>
+        </div>
+        <div class="card">
+          <h3>Support dédié</h3>
+          <p class="muted">Accompagnement pro, process transparents, exécution rapide.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="how-it-works">
-    <h2>Comment ça marche ?</h2>
-    <ol>
-      <li>Vous réservez un appel gratuit pour évaluer vos besoins.</li>
-      <li>Nous paramétrons votre compte avec notre IA et votre calendrier de contenu.</li>
-      <li>Vous fournissez vos visuels ; nous nous chargeons du reste (posts, messages, upsells).</li>
-      <li>Vous consultez les résultats via votre tableau de bord et profitez de vos nouveaux revenus.</li>
-    </ol>
+  <section>
+    <div class="container">
+      <h2 style="margin:0 0 18px">Comment ça marche ?</h2>
+      <div class="how">
+        <div class="card">
+          <h3>1) Onboarding</h3>
+          <p class="muted">Tu remplis le formulaire (2–3 min). On évalue tes besoins.</p>
+        </div>
+        <div class="card">
+          <h3>2) Setup & planning</h3>
+          <p class="muted">Mise en place des automatisations + calendrier de contenu.</p>
+        </div>
+        <div class="card">
+          <h3>3) Growth & ventes</h3>
+          <p class="muted">On lance les upsells & campagnes. Tu suis les résultats.</p>
+        </div>
+      </div>
+      <div class="cta-row" style="margin-top:22px">
+        <a class="btn btn-primary" href="https://forms.gle/2xBLefPZRTsnnSSGA" target="_blank" rel="noopener">Démarrer maintenant</a>
+        <a class="btn" href="#faq">Questions fréquentes</a>
+      </div>
+    </div>
   </section>
 
-  <section id="contact" class="contact-section">
-    <h2 style="text-align:center; margin-bottom:20px;">Nous contacter</h2>
-    <p style="text-align:center; margin-bottom:20px;">Une question ou envie d’en savoir plus ? Cliquez ci-dessous :</p>
-    <!-- ✅ Bouton déjà présent -->
-    <div style="text-align:center; margin-top:20px;">
-      <a href="https://forms.gle/2xBLefPZRTsnnSSGA" target="_blank" class="cta-button">
-        Remplir le questionnaire d’onboarding
-      </a>
+  <section id="faq">
+    <div class="container">
+      <h2 style="margin:0 0 14px">FAQ express</h2>
+      <p class="muted"><strong>Y a‑t‑il des frais fixes ?</strong> Non. Modèle au pourcentage (70/30).</p>
+      <p class="muted"><strong>Qui garde le contrôle du contenu ?</strong> La créatrice. Nous gérons l’opérationnel.</p>
+      <p class="muted"><strong>Combien de temps pour lancer ?</strong> 48–72h après onboarding.</p>
     </div>
   </section>
 
   <footer>
-    &copy; 2025 Agence OnlyFans Manager Automatisée. Tous droits réservés.
+    <div class="container">© 2025 Nova Agency — Tous droits réservés.</div>
   </footer>
 </body>
 </html>

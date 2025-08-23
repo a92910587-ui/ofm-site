@@ -1,32 +1,74 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nova Agency — Candidature</title>
-  <link rel="stylesheet" href="../assets/styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nova Agency — Candidature</title>
+<style>
+  :root{--bg:#0b1220;--panel:#121A2A;--muted:#92A1B2;--text:#E7ECF3;--brand:#7aa2ff}
+  *{box-sizing:border-box}html,body{margin:0;height:100%}
+  body{background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto}
+  .wrap{max-width:980px;margin:0 auto;padding:32px 16px 64px}
+  .badge{display:inline-block;background:rgba(122,162,255,.12);color:var(--brand);padding:6px 10px;border-radius:999px;font-weight:600;font-size:14px;border:1px solid rgba(122,162,255,.25)}
+  h1{font-size:44px;line-height:1.1;margin:12px 0 8px}
+  p.lead{color:var(--muted);margin:0 0 24px}
+  .card{background:var(--panel);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:24px 20px;box-shadow:0 6px 24px rgba(0,0,0,.25)}
+  label{display:block;color:#c9d3df;margin:14px 0 6px;font-weight:600}
+  input,textarea{width:100%;background:#0f1524;color:var(--text);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px 14px;outline:none}
+  input:focus,textarea:focus{border-color:rgba(122,162,255,.5)}textarea{min-height:120px;resize:vertical}
+  button{margin-top:16px;background:var(--brand);color:#0a0f1c;border:none;border-radius:12px;padding:12px 18px;font-weight:700;cursor:pointer}
+  button:disabled{opacity:.6;cursor:not-allowed}
+  .alert{margin-top:12px;font-weight:600}
+  .ok{color:#28c18f}.err{color:#ff6b6b}
+  footer{margin-top:36px;color:var(--muted);font-size:14px}
+  @media (max-width:720px){h1{font-size:34px}}
+</style>
 </head>
 <body>
-  <h1>Nova Agency</h1>
-  <p>Onboarding, calendrier OF, DM management & reporting — <strong>aucun appel requis</strong>.</p>
+  <div class="wrap">
+    <span class="badge">OnlyFans — Agence d’opérations</span>
+    <h1>Nova Agency</h1>
+    <p class="lead">Onboarding, calendrier OF, DM management & reporting — <strong>aucun appel requis</strong>.</p>
 
-  <form action="https://hook.eu2.make.com/TON_WEBHOOK_ID" method="POST">
-    <label>Nom de scène</label><br>
-    <input type="text" name="stage_name" required><br><br>
+    <div class="card">
+      <h2 style="margin:0 0 14px">Candidature modèle</h2>
+      <form id="f">
+        <label>Nom de scène</label>
+        <input name="stage_name" placeholder="Nom" required>
+        <label>Email</label>
+        <input name="email" type="email" placeholder="vous@mail.com" required>
+        <label>Liens réseaux (OF, IG, X)</label>
+        <input name="links" placeholder="https://onlyfans.com/… ; @instagram ; @x">
+        <label>Revenu mensuel visé (€)</label>
+        <input name="target" inputmode="numeric" placeholder="3000">
+        <label>Message</label>
+        <textarea name="message" placeholder="Projet, limites et attentes…"></textarea>
+        <button id="btn" type="submit">Postuler</button>
+        <div id="alert" class="alert" aria-live="polite"></div>
+        <p class="lead" style="margin-top:6px">Après candidature, vous recevez les instructions <strong>par e‑mail</strong>. Aucun appel.</p>
+      </form>
+    </div>
 
-    <label>Email</label><br>
-    <input type="email" name="email" required><br><br>
+    <footer>© Nova Agency</footer>
+  </div>
 
-    <label>Liens réseaux (OF, IG, X)</label><br>
-    <input type="text" name="links"><br><br>
-
-    <label>Revenu mensuel visé (€)</label><br>
-    <input type="number" name="target"><br><br>
-
-    <label>Message</label><br>
-    <textarea name="message"></textarea><br><br>
-
-    <button type="submit">Postuler</button>
-  </form>
+<script>
+const HOOK = "https://hook.eu2.make.com/tkth9qy4lg6lnco3bw63ovaefkxpu4dm";
+const THANKS_URL = "thanks.html";
+const f = document.getElementById('f');
+const btn = document.getElementById('btn');
+const alertBox = document.getElementById('alert');
+function status(m,c){alertBox.textContent=m;alertBox.className='alert '+(c||'');}
+f.addEventListener('submit', async (e)=>{
+  e.preventDefault(); btn.disabled=true; status('Envoi…');
+  const data = Object.fromEntries(new FormData(f).entries());
+  data.ts = new Date().toISOString(); data.source='landing:of';
+  try{
+    const r = await fetch(HOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+    if(r.ok){ status('Merci ! Redirection…','ok'); setTimeout(()=>location.href=THANKS_URL,200); }
+    else{ status('Erreur ('+r.status+'). Réessayez.','err'); btn.disabled=false; }
+  }catch(err){ status('Erreur réseau. Réessayez.','err'); btn.disabled=false; }
+});
+</script>
 </body>
 </html>
